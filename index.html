@@ -621,28 +621,112 @@
   }
 
   /* ── Responsive ── */
+
+  /* Tablet: 1024px */
+  @media (max-width: 1024px) {
+    .sidebar { width: 260px; min-width: 260px; }
+    .search-bar input { width: 160px; }
+    .verse-arabic { font-size: 24px; }
+    .player-info { display: none; }
+  }
+
+  /* Mobile: 768px */
   @media (max-width: 768px) {
+    /* Header */
     .hamburger { display: flex; }
     .search-bar { display: none; }
+    .header { padding: 0 14px; height: 56px; }
+    .header-logo { width: 34px; height: 34px; font-size: 15px; }
+    .header-title { font-size: 17px; }
+    .btn-icon { width: 34px; height: 34px; font-size: 14px; }
+
+    /* Layout */
+    .layout { height: calc(100vh - 56px); }
+
+    /* Sidebar: drawer from right */
     .sidebar {
       position: fixed;
-      top: 64px;
+      top: 56px;
       right: 0;
-      height: calc(100vh - 64px);
+      width: 280px;
+      min-width: 280px;
+      height: calc(100vh - 56px);
       z-index: 60;
       transform: translateX(100%);
     }
     .sidebar.open { transform: translateX(0); }
     .sidebar-overlay.open { display: block; }
-    .layout { flex-direction: column; }
-    .main { height: calc(100vh - 64px); }
-    .surah-header { padding: 24px 20px; }
-    .surah-header-name { font-size: 32px; }
-    .verses-container { padding: 0 12px 80px; }
-    .verse-arabic { font-size: 22px; }
-    .audio-player { gap: 10px; padding: 10px 16px; }
-    .player-progress { min-width: 80px; }
-    .header-title { font-size: 18px; }
+
+    /* Main */
+    .main { height: calc(100vh - 56px); width: 100%; }
+
+    /* Surah header */
+    .surah-header { padding: 20px 16px; }
+    .surah-header-name { font-size: 28px; }
+    .surah-header-en { font-size: 12px; }
+    .surah-header-meta { gap: 14px; }
+    .meta-chip { font-size: 12px; }
+
+    /* Audio player: two rows */
+    .audio-player {
+      padding: 8px 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .player-info { display: none; }
+    .player-progress {
+      order: 10;
+      width: 100%;
+      min-width: unset;
+      flex: unset;
+    }
+    .player-volume { display: none; }
+    .reading-mode-toggle { font-size: 12px; padding: 6px 10px; }
+
+    /* Bismillah */
+    .bismillah { font-size: 24px; }
+    .bismillah-wrap { padding: 18px 16px 10px; }
+
+    /* Verses */
+    .verses-container { padding: 0 8px 160px; }
+    .verse-arabic { font-size: 21px; line-height: 2.1; }
+    .verse-number { width: 40px; min-width: 40px; }
+    .verse-num-badge { width: 30px; height: 30px; font-size: 10px; }
+    .verse-content { padding: 12px 0 12px 8px; }
+
+    /* Reading panel */
+    .reading-panel { padding: 10px 12px; gap: 8px; }
+    .reading-verse-display { font-size: 20px; padding: 8px 12px; }
+    .reading-input { font-size: 17px; padding: 8px 12px; }
+    .reading-btn { font-size: 11px; padding: 7px 10px; }
+    .reading-mode-toggle { gap: 5px; }
+
+    /* Scroll top */
+    .scroll-top { bottom: 16px; left: 12px; width: 38px; height: 38px; font-size: 15px; }
+
+    /* Welcome */
+    .welcome-title { font-size: 26px; }
+    .welcome-ornament { font-size: 48px; }
+    .welcome-verse { font-size: 18px; padding: 14px 20px; }
+  }
+
+  /* Small phones: 480px */
+  @media (max-width: 480px) {
+    .header-title { font-size: 15px; }
+    .surah-header-name { font-size: 24px; }
+    .verse-arabic { font-size: 19px; line-height: 2; }
+    .bismillah { font-size: 20px; }
+    .reading-verse-display { font-size: 18px; }
+    .reading-input { font-size: 16px; }
+    .reading-action-btns { gap: 5px; }
+    .reading-btn { font-size: 10px; padding: 6px 8px; }
+    .audio-player { padding: 6px 10px; gap: 6px; }
+    .player-btn { width: 36px; height: 36px; font-size: 14px; }
+    .player-btn.play-btn { width: 40px; height: 40px; font-size: 16px; }
+    .surah-header-meta { flex-direction: column; gap: 6px; }
+    .verses-container { padding: 0 6px 180px; }
+    .reading-panel { padding: 8px 10px; }
+    .sidebar { width: 100%; }
   }
 
   /* Scroll to top */
@@ -671,6 +755,106 @@
   /* Animations */
   .fade-in { animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── Voice Reading ── */
+  .voice-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .voice-mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 24px;
+    border: 1px solid rgba(201,150,58,0.35);
+    background: rgba(201,150,58,0.07);
+    color: var(--accent-gold-light);
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .voice-mode-btn:hover { background: rgba(201,150,58,0.16); border-color: var(--accent-gold); }
+  .voice-mode-btn.voice-active {
+    background: rgba(220,50,50,0.15);
+    border-color: #e05050;
+    color: #e05050;
+    animation: voice-pulse-btn 1.5s ease-in-out infinite;
+  }
+  @keyframes voice-pulse-btn {
+    0%,100% { box-shadow: 0 0 0 0 rgba(220,50,50,0.3); }
+    50%      { box-shadow: 0 0 0 6px rgba(220,50,50,0); }
+  }
+  .mic-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+  .voice-mode-btn.voice-active .mic-dot { animation: mic-blink 0.8s ease-in-out infinite; }
+  @keyframes mic-blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .voice-status {
+    font-size: 12px;
+    color: var(--text-muted);
+    min-height: 18px;
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+    transition: color 0.2s;
+  }
+  .voice-status.listening { color: #e05050; font-weight: 600; }
+  .voice-status.heard { color: var(--accent-gold); }
+
+  .voice-interim {
+    font-family: 'Amiri Quran', 'Amiri', serif;
+    font-size: 18px;
+    direction: rtl;
+    text-align: right;
+    padding: 8px 14px;
+    background: rgba(220,50,50,0.05);
+    border: 1px dashed rgba(220,50,50,0.25);
+    border-radius: 8px;
+    color: var(--text-muted);
+    min-height: 40px;
+    display: none;
+    line-height: 1.8;
+  }
+  .voice-interim.active { display: block; }
+  .voice-interim .interim-text { color: rgba(220,50,50,0.6); font-style: italic; }
+  .voice-interim .final-text  { color: var(--text-primary); }
+
+  .word-span.voice-correct {
+    background: rgba(45,160,80,0.18);
+    color: #2da050;
+    border-radius: 4px;
+  }
+  .word-span.voice-wrong {
+    background: rgba(220,60,60,0.18);
+    color: #e05050;
+    border-radius: 4px;
+    text-decoration: underline wavy #e05050;
+  }
+  .word-span.voice-current {
+    background: rgba(220,50,50,0.15);
+    color: #e05050;
+    border-radius: 4px;
+    animation: voice-word-pulse 1s ease-in-out infinite;
+  }
+  @keyframes voice-word-pulse {
+    0%,100% { background: rgba(220,50,50,0.1); }
+    50%      { background: rgba(220,50,50,0.28); }
+  }
+
+  .no-speech-support {
+    font-size: 12px;
+    color: #e05050;
+    text-align: center;
+    padding: 6px;
+    font-family: 'Cairo', sans-serif;
+  }
 
   /* ── Reading Mode Button ── */
   .reading-mode-toggle {
@@ -839,6 +1023,7 @@
   .reading-btn.next-verse-btn:hover { opacity: 0.9; }
 
   /* Error popup */
+  .error-popup { direction: rtl; }
   .error-popup {
     position: fixed;
     top: 80px;
@@ -1293,12 +1478,19 @@ function renderSurah(data) {
             <span class="stat-chip stat-correct">✓ <span id="statCorrect">0</span></span>
             <span class="stat-chip stat-wrong">✗ <span id="statWrong">0</span></span>
           </div>
+          <div class="voice-toggle-wrap">
+            <button class="voice-mode-btn" id="voiceModeBtn" onclick="toggleVoiceMode()">
+              <span class="mic-dot"></span> قراءة بالصوت
+            </button>
+          </div>
         </div>
+        <div class="voice-interim" id="voiceInterim"></div>
+        <div class="voice-status" id="voiceStatus"></div>
         <div class="reading-verse-display" id="readingVerseDisplay"></div>
         <div class="verse-complete-banner" id="verseCompleteBanner">
           ✅ أحسنت! الآية مكتملة
         </div>
-        <div class="reading-input-wrap">
+        <div class="reading-input-wrap" id="textInputWrap">
           <input
             class="reading-input"
             id="readingInput"
@@ -1368,6 +1560,8 @@ function toggleReadingMode() {
     btn.classList.remove('active');
     btn.textContent = '📖 وضع القراءة';
     panel.style.display = 'none';
+    // stop voice if active
+    if (voiceMode) { voiceMode = false; stopVoiceRecognition(); }
     // Clear all highlights
     document.querySelectorAll('.verse-card').forEach(c => {
       c.classList.remove('reading-active','reading-done');
@@ -1533,13 +1727,25 @@ function verseComplete() {
 }
 
 function nextVerse() {
+  // Stop voice between verses
+  if (voiceMode) {
+    stopVoiceRecognition();
+  }
   readingVerseIdx++;
+  voiceWordIdx = 0;
   _wordResults = [];
   if (readingVerseIdx >= currentAyahs.length) {
     finishReading();
   } else {
     startReadingVerse();
-    setTimeout(() => document.getElementById('readingInput')?.focus(), 100);
+    if (voiceMode) {
+      // restart mic for new verse after small delay
+      const interim = document.getElementById('voiceInterim');
+      if (interim) { interim.innerHTML = ''; }
+      setTimeout(() => { if (voiceMode) startVoiceRecognition(); }, 600);
+    } else {
+      setTimeout(() => document.getElementById('readingInput')?.focus(), 100);
+    }
   }
 }
 
@@ -1630,6 +1836,190 @@ function updateStats() {
   if (sc) sc.textContent = readingCorrect;
   if (sw) sw.textContent = readingWrong;
 }
+
+
+// ── Voice Reading Mode ──
+let voiceMode = false;
+let recognition = null;
+let voiceWordIdx = 0;
+let voiceResults = [];
+let isRecognizing = false;
+
+function toggleVoiceMode() {
+  const btn = document.getElementById('voiceModeBtn');
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRec) {
+    const wrap = document.querySelector('.voice-toggle-wrap');
+    wrap.innerHTML = '<span class="no-speech-support">⚠️ متصفحك لا يدعم التعرف على الصوت، استخدم Chrome</span>';
+    return;
+  }
+  voiceMode = !voiceMode;
+  const textWrap = document.getElementById('textInputWrap');
+  const interim = document.getElementById('voiceInterim');
+  const status  = document.getElementById('voiceStatus');
+
+  if (voiceMode) {
+    btn.classList.add('voice-active');
+    btn.innerHTML = '<span class="mic-dot"></span> إيقاف الصوت';
+    textWrap.style.display = 'none';
+    interim.classList.add('active');
+    // reset word pointer for voice
+    voiceWordIdx = readingWordIdx;
+    voiceResults = [..._wordResults];
+    startVoiceRecognition();
+  } else {
+    btn.classList.remove('voice-active');
+    btn.innerHTML = '<span class="mic-dot"></span> قراءة بالصوت';
+    textWrap.style.display = '';
+    interim.classList.remove('active');
+    interim.innerHTML = '';
+    status.textContent = '';
+    status.className = 'voice-status';
+    stopVoiceRecognition();
+  }
+}
+
+function startVoiceRecognition() {
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRec();
+  recognition.lang = 'ar-SA';
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 3;
+
+  const status = document.getElementById('voiceStatus');
+  const interim = document.getElementById('voiceInterim');
+
+  recognition.onstart = () => {
+    isRecognizing = true;
+    status.textContent = '🎙️ جارٍ الاستماع... اقرأ بصوت واضح';
+    status.className = 'voice-status listening';
+  };
+
+  recognition.onend = () => {
+    isRecognizing = false;
+    if (voiceMode) {
+      // auto-restart
+      status.textContent = '🔄 إعادة الاتصال...';
+      setTimeout(() => { if (voiceMode) recognition.start(); }, 500);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    isRecognizing = false;
+    if (e.error === 'not-allowed') {
+      status.textContent = '❌ لم يتم السماح بالميكروفون';
+      status.className = 'voice-status';
+      voiceMode = false;
+      const btn = document.getElementById('voiceModeBtn');
+      btn.classList.remove('voice-active');
+      btn.innerHTML = '<span class="mic-dot"></span> قراءة بالصوت';
+      document.getElementById('textInputWrap').style.display = '';
+    }
+  };
+
+  recognition.onresult = (e) => {
+    let interimStr = '';
+    let finalStr   = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const t = e.results[i][0].transcript.trim();
+      if (e.results[i].isFinal) finalStr += ' ' + t;
+      else interimStr += t;
+    }
+
+    // Show live feedback
+    if (interimStr) {
+      interim.innerHTML = `<span class="interim-text">${interimStr}</span>`;
+    }
+    if (finalStr.trim()) {
+      interim.innerHTML = `<span class="final-text">${finalStr.trim()}</span>`;
+      status.textContent = '✅ تم التعرف على الكلام...';
+      status.className = 'voice-status heard';
+      processVoiceText(finalStr.trim());
+      setTimeout(() => {
+        if (voiceMode && isRecognizing) {
+          status.textContent = '🎙️ جارٍ الاستماع... اقرأ بصوت واضح';
+          status.className = 'voice-status listening';
+          interim.innerHTML = '';
+        }
+      }, 1200);
+    }
+  };
+
+  recognition.start();
+}
+
+function stopVoiceRecognition() {
+  if (recognition) {
+    try { recognition.stop(); } catch(e) {}
+    recognition = null;
+  }
+  isRecognizing = false;
+}
+
+function processVoiceText(spokenText) {
+  const ayah = currentAyahs[readingVerseIdx];
+  if (!ayah) return;
+  const words = getWords(ayah.text);
+
+  // Split spoken text into words
+  const spokenWords = spokenText.split(/\s+/).filter(w => w.length > 0);
+
+  for (const spoken of spokenWords) {
+    if (voiceWordIdx >= words.length) break;
+    const expected  = words[voiceWordIdx];
+    const isCorrect = normalizeArabic(spoken) === normalizeArabic(expected);
+
+    _wordResults.push({ idx: voiceWordIdx, correct: isCorrect });
+    if (isCorrect) {
+      readingCorrect++;
+    } else {
+      readingWrong++;
+      // Show error toast with correction
+      showVoiceError(expected, spoken);
+    }
+    updateStats();
+    voiceWordIdx++;
+    readingWordIdx = voiceWordIdx;
+  }
+
+  // Re-render display with voice classes
+  renderVoiceDisplay(words, voiceWordIdx, _wordResults);
+
+  if (voiceWordIdx >= words.length) {
+    setTimeout(() => {
+      stopVoiceRecognition();
+      verseComplete();
+    }, 600);
+  }
+}
+
+function renderVoiceDisplay(words, currentIdx, results) {
+  const resultMap = {};
+  results.forEach(r => resultMap[r.idx] = r.correct);
+
+  const html = words.map((w, i) => {
+    let cls = 'pending';
+    if (i === currentIdx) cls = 'voice-current';
+    else if (i in resultMap) cls = resultMap[i] ? 'voice-correct' : 'voice-wrong';
+    else if (i < currentIdx) cls = 'skipped';
+    return `<span class="word-span ${cls}" id="rw-${i}">${w}</span>`;
+  }).join(' ');
+  const disp = document.getElementById('readingVerseDisplay');
+  if (disp) disp.innerHTML = html;
+}
+
+function showVoiceError(expected, spoken) {
+  const el = document.getElementById('errorPopup');
+  if (!el) return;
+  el.innerHTML = `❌ قلت: <strong>${spoken}</strong> &nbsp;·&nbsp; الصحيح: <strong>${expected}</strong>`;
+  el.classList.add('show');
+  clearTimeout(popupTimer);
+  popupTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// Override nextVerse to stop recognition between verses
+const _origNextVerse = window.nextVerse;
 
 // ── Popups ──
 let popupTimer = null;
@@ -1726,5 +2116,56 @@ function scrollToTop() {
 
 init();
 </script>
+
+<!-- ── Developer Credit ── -->
+<style>
+  .dev-credit {
+    position: fixed;
+    bottom: 14px;
+    right: 18px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .dev-credit.visible { opacity: 0.15; }
+  .dev-credit:hover { opacity: 1 !important; }
+  .dev-credit-label {
+    font-family: 'Cairo', sans-serif;
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dev-credit-name {
+    font-family: 'Cairo', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dev-credit:hover .dev-credit-name { color: var(--accent-gold); }
+  .dev-credit:hover .dev-credit-label { color: var(--text-secondary); }
+</style>
+
+<a class="dev-credit" id="devCredit" href="https://www.facebook.com/share/1FRv79XE8V/" target="_blank" rel="noopener" title="Developed by Mahmoud Hamdy">
+  <span class="dev-credit-label">Developed by</span>
+  <span class="dev-credit-name">Mahmoud Hamdy</span>
+</a>
+<script>
+  let _devTimer;
+  document.addEventListener('mousemove', () => {
+    const el = document.getElementById('devCredit');
+    if (!el) return;
+    el.classList.add('visible');
+    clearTimeout(_devTimer);
+    _devTimer = setTimeout(() => el.classList.remove('visible'), 3000);
+  });
+</script>
+
 </body>
-  </html>
+</html>
