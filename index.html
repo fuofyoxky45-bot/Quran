@@ -2166,6 +2166,58 @@ init();
     _devTimer = setTimeout(() => el.classList.remove('visible'), 3000);
   });
 </script>
+  <!-- Developer Credit Footer -->
+<style>
+  .dev-credit {
+    position: fixed;
+    bottom: 14px;
+    right: 18px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .dev-credit.visible { opacity: 0.15; }
+  .dev-credit:hover { opacity: 1 !important; }
+  .dev-credit-label {
+    font-size: 10px;
+    color: #9a8870;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dev-credit-name {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9a8870;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dev-credit:hover .dev-credit-name { color: #c9963a; }
+  .dev-credit:hover .dev-credit-label { color: #5a4a2f; }
+</style>
+
+<a class="dev-credit" id="devCredit"
+   href="https://www.facebook.com/share/1FRv79XE8V/"
+   target="_blank"
+   rel="noopener"
+   title="Developed by Mahmoud Hamdy">
+  <span class="dev-credit-label">Developed by</span>
+  <span class="dev-credit-name">Mahmoud Hamdy</span>
+</a>
+
+<script>
+  let _devTimer;
+  document.addEventListener('mousemove', () => {
+    const el = document.getElementById('devCredit');
+    if (!el) return;
+    el.classList.add('visible');
+    clearTimeout(_devTimer);
+    _devTimer = setTimeout(() => el.classList.remove('visible'), 3000);
+  });
+</script>
 
 </body>
 </html>
